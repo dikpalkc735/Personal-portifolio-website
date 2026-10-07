@@ -20,10 +20,10 @@ export function Header() {
           <Image className="brand-logo" src="/images/digital-dikpal-logo.png" width={1194} height={198} alt="Digital Dikpal" priority />
         </Link>
         <nav className="desktop-nav" aria-label="Primary navigation">{navigation.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}</nav>
-        <Link className="button button-small desktop-cta" href="/book-consultation" data-event="consultation_cta_click">Book a Free Call</Link>
+        <Link className="button button-small desktop-cta" href="/book-consultation" data-event="consultation_cta_click">Book a Free Consultation</Link>
         <button className="menu-button" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}</button>
       </div>
-      {open && <div className="mobile-menu"><nav aria-label="Mobile navigation">{navigation.map((item) => <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</Link>)}<Link className="button" href="/book-consultation" onClick={() => setOpen(false)} data-event="consultation_cta_click">Book a Free Consultation Call</Link></nav></div>}
+      {open && <div className="mobile-menu"><nav aria-label="Mobile navigation">{navigation.map((item) => <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</Link>)}<Link className="button" href="/book-consultation" onClick={() => setOpen(false)} data-event="consultation_cta_click">Book a Free Consultation</Link></nav></div>}
     </header>
   );
 }

@@ -39,8 +39,8 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "ai-digital-marketing", title: "AI-Powered Digital Marketing", shortTitle: "AI Digital Marketing",
-    description: "Combine practical AI tools with proven marketing to research faster, personalize customer journeys, and improve campaign decisions.",
-    benefit: "More effective marketing without adding unnecessary complexity.", idealFor: "Businesses ready to use AI across several marketing channels.",
+    description: "Use AI and modern digital marketing strategies to reach the right customers, improve your campaigns, save time, and create more opportunities for growth.",
+    benefit: "Reach the right customers and improve your marketing more efficiently.", idealFor: "Businesses ready to use AI across several marketing channels.",
     problems: ["Marketing decisions take too long or rely on guesswork", "Content and campaign research consume too much time", "Customer journeys feel generic or disconnected", "Data exists, but it is difficult to turn into action"],
     included: ["AI opportunity audit", "Audience and competitor research workflow", "AI-assisted content and campaign system", "Customer journey improvements", "Analytics and decision-support framework", "Team-ready implementation guidance"],
     benefits: ["Make better-informed marketing decisions", "Move from ideas to campaigns more efficiently", "Create more relevant customer experiences", "Build an AI workflow your team can actually use"],
@@ -52,8 +52,8 @@ export const services: Service[] = [
   },
   {
     slug: "digital-marketing-strategy", title: "Digital Marketing Strategy", shortTitle: "Marketing Strategy",
-    description: "Turn scattered marketing activity into a focused plan for acquisition, conversion, retention, and measurement.",
-    benefit: "A clear roadmap that connects marketing activity to business goals.", idealFor: "Businesses that need direction before investing more time or budget.",
+    description: "Stop guessing what to do next. Get a clear marketing strategy focused on attracting customers, generating leads, improving conversions, and growing your business.",
+    benefit: "A clear direction for attracting customers and growing your business.", idealFor: "Businesses that need direction before investing more time or budget.",
     problems: ["Too many disconnected marketing activities", "Unclear customer acquisition priorities", "No reliable way to measure progress", "Budget is spread across channels without a clear role"],
     included: ["Business and marketing audit", "Customer acquisition plan", "Content and channel priorities", "Conversion and retention strategy", "Measurement framework", "90-day action roadmap"],
     benefits: ["Know what to prioritize next", "Use budget more intentionally", "Align marketing with sales goals", "Create a repeatable path for growth"],
@@ -65,8 +65,8 @@ export const services: Service[] = [
   },
   {
     slug: "meta-ads", title: "Paid Advertising / Meta Ads", shortTitle: "Meta Ads",
-    description: "Plan and improve Facebook and Instagram campaigns designed to reach the right audience and create qualified demand.",
-    benefit: "More accountable advertising built around leads and sales.", idealFor: "Service businesses and growing brands ready to acquire customers through paid social.",
+    description: "Reach potential customers through Facebook and Instagram advertising with focused campaigns designed to generate leads, customers, and measurable business results.",
+    benefit: "Focused advertising built around leads, customers, and measurable results.", idealFor: "Service businesses and growing brands ready to acquire customers through paid social.",
     problems: ["Campaigns spend without a clear strategy", "Targeting and creative do not work together", "Leads are inconsistent or low quality", "Tracking makes it hard to know what is working"],
     included: ["Campaign strategy", "Audience research", "Campaign setup", "Creative direction", "Lead generation and retargeting", "Optimization and conversion tracking"],
     benefits: ["Reach more relevant prospects", "Create a clearer path from ad to action", "Learn from campaign data", "Improve spend efficiency over time"],
@@ -78,8 +78,8 @@ export const services: Service[] = [
   },
   {
     slug: "email-marketing", title: "Email Marketing", shortTitle: "Email Marketing",
-    description: "Build useful email journeys that nurture leads, support sales, and keep your business connected with customers.",
-    benefit: "Turn more of your existing audience into conversations and customers.", idealFor: "Businesses with leads or customers who need better follow-up.",
+    description: "Turn leads into customers and keep your audience engaged with strategic email campaigns and automated follow-up.",
+    benefit: "Stay connected with leads and create more opportunities to turn them into customers.", idealFor: "Businesses with leads or customers who need better follow-up.",
     problems: ["Leads go cold after the first enquiry", "Email communication is irregular", "Every follow-up is done manually", "The same message is sent to everyone"],
     included: ["Email strategy", "Lead nurture sequences", "Newsletter framework", "Sales campaigns", "Segmentation plan", "Email automation and follow-up"],
     benefits: ["Stay relevant after the first interaction", "Nurture leads consistently", "Save time on routine follow-up", "Create more opportunities from your audience"],
@@ -91,8 +91,8 @@ export const services: Service[] = [
   },
   {
     slug: "ai-marketing-automation", title: "AI Marketing Automation", shortTitle: "AI Automation",
-    description: "Design reliable workflows for lead follow-up, customer communication, content processes, and internal marketing operations.",
-    benefit: "Save time while creating a more consistent customer experience.", idealFor: "Busy teams losing time to repetitive marketing tasks and manual handoffs.",
+    description: "Save time and make your marketing more efficient by using AI and automation for repetitive marketing tasks, lead nurturing, follow-up, and customer communication.",
+    benefit: "Save time and make lead follow-up and customer communication more consistent.", idealFor: "Busy teams losing time to repetitive marketing tasks and manual handoffs.",
     problems: ["Leads wait too long for a response", "Marketing tasks depend on manual reminders", "Customer information is scattered", "The team repeats the same work every week"],
     included: ["Workflow audit", "Automation opportunity map", "Lead follow-up workflows", "Email and CRM sequences", "AI-assisted content processes", "Testing, documentation, and handover"],
     benefits: ["Respond to leads more consistently", "Reduce repetitive work", "Improve handoffs between tools and people", "Give your team more time for high-value work"],
@@ -156,10 +156,10 @@ export const blogPosts: BlogPost[] = [
 ];
 
 export const processSteps = [
-  { title: "Business Analysis", text: "Understand your goals, customers, current marketing, constraints, and commercial priorities." },
-  { title: "Find Growth Opportunities", text: "Identify the strongest opportunities across ads, content, email, automation, funnels, and AI." },
-  { title: "Build a Customized Plan", text: "Turn the findings into a focused plan that fits your team, budget, and next-stage goals." },
-  { title: "Implement & Optimize", text: "Put the plan into action, measure what matters, and improve it through structured testing." },
+  { title: "Understand Your Business", text: "We look at your business, customers, current marketing, goals, and challenges." },
+  { title: "Find Growth Opportunities", text: "I identify areas where AI and digital marketing can help you attract more customers and improve your results." },
+  { title: "Create Your Customized Plan", text: "You receive a practical Digital Marketing Plan designed specifically for your business." },
+  { title: "Start Taking Action", text: "You’ll leave with clear recommendations and actions you can start implementing immediately." },
 ];
 
 export const testimonialPlaceholders = [
