@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { Menu, Sparkles, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { navigation, siteConfig } from "@/lib/site-data";
+import { navigation } from "@/lib/site-data";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -15,7 +16,9 @@ export function Header() {
   return (
     <header className={`site-header ${compact ? "is-compact" : ""}`}>
       <div className="shell nav-wrap">
-        <Link href="/" className="brand" aria-label="Digital Dikpal home"><span className="brand-mark"><Sparkles size={18} aria-hidden="true" /></span><span><strong>{siteConfig.brand}</strong><small>{siteConfig.role}</small></span></Link>
+        <Link href="/" className="brand" aria-label="Digital Dikpal home">
+          <Image className="brand-logo" src="/images/digital-dikpal-logo.png" width={1194} height={198} alt="Digital Dikpal" priority />
+        </Link>
         <nav className="desktop-nav" aria-label="Primary navigation">{navigation.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}</nav>
         <Link className="button button-small desktop-cta" href="/book-consultation" data-event="consultation_cta_click">Book a Free Call</Link>
         <button className="menu-button" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}</button>
