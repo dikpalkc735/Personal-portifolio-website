@@ -4,6 +4,7 @@ import { siteConfig } from "@/lib/site-data";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AnalyticsEvents } from "@/components/analytics";
+import { ScrollExperience } from "@/components/scroll-experience";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
@@ -20,4 +21,4 @@ const structuredData = [
   { "@context": "https://schema.org", "@type": "ProfessionalService", name: siteConfig.brand, description: "AI-powered digital marketing that helps small and medium-sized businesses attract customers, improve marketing, save time, and grow revenue.", url: siteConfig.siteUrl, founder: { "@type": "Person", name: siteConfig.name } },
 ];
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="en"><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /><AnalyticsEvents /><Header />{children}<Footer /></body></html>; }
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="en"><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /><AnalyticsEvents /><ScrollExperience /><Header />{children}<Footer /></body></html>; }
