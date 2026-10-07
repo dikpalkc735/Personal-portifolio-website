@@ -2,6 +2,6 @@ import Image from "next/image";
 
 export function HeroVisual() {
   return (
-    <div className="hero-visual"><div className="visual-glow" /><div className="hero-image-frame"><Image src="/images/ai-marketing-system.png" alt="AI marketing system connecting customer insights, email, automation, and business growth" width={1680} height={944} priority sizes="(max-width: 980px) 92vw, 48vw" /></div><div className="visual-note"><strong>Strategy + systems</strong><span>Built around your business</span></div></div>
+    <div className="hero-visual"><div className="visual-glow" /><div className="hero-image-frame hero-portrait-frame"><Image src="/images/dikpal-hero.png" alt="Dikpal K C, AI Marketing Expert, in his office" fill priority sizes="(max-width: 980px) 92vw, 46vw" /></div><div className="visual-note"><strong>Dikpal K C</strong><span>AI Marketing Expert</span></div></div>
   );
 }
