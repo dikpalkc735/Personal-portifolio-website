@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/site-link";
 import { CalendarCheck2 } from "lucide-react";
 
 export function CTASection({ compact = false }: { compact?: boolean }) {

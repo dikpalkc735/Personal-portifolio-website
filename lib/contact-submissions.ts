@@ -33,3 +33,12 @@ export async function saveContactSubmission(submission: ContactSubmission) {
     submission.form_source,
   ).run();
 }
+
+export async function saveNewsletterSubscriber(email: string) {
+  if (!env.DB) throw new Error("Newsletter storage is unavailable.");
+
+  return env.DB.prepare(`
+    INSERT OR IGNORE INTO newsletter_subscribers (email, source)
+    VALUES (?, ?)
+  `).bind(email, "website-newsletter").run();
+}

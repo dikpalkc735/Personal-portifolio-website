@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/site-link";
 import { ArrowUpRight, Check } from "lucide-react";
 import { HeroVisual } from "@/components/hero-visual";
 import { BlogCard } from "@/components/blog-card";

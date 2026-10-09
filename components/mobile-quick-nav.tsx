@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/site-link";
 import { BookOpen, Home, Layers3, Mail, UserRound } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";

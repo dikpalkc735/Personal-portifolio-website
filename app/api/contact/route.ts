@@ -9,6 +9,7 @@ export async function POST(request: Request) {
     const parsed = ContactSchema.safeParse(await request.json());
     if (!parsed.success) return NextResponse.json({ message: "Please check the required fields and try again." }, { status: 400 });
     const { company_website: _honeypot, ...submission } = parsed.data;
+    void _honeypot;
     await saveContactSubmission(submission);
 
     const endpoint = process.env.CONTACT_FORM_ENDPOINT;

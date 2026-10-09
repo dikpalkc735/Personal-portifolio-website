@@ -8,6 +8,13 @@
       "when": 1791480856790,
       "tag": "0000_orange_madame_web",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1791561621723,
+      "tag": "0001_heavy_ezekiel",
+      "breakpoints": true
     }
   ]
 }

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/site-link";
 import { navigation, services, siteConfig } from "@/lib/site-data";
 
 export function Footer() {

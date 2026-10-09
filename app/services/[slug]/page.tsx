@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/site-link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Check, CircleAlert } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";

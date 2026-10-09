@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/site-link";
 import { ArrowUpRight, Clock3 } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BlogExplorer } from "@/components/blog-explorer";
