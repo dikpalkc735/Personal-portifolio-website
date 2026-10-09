@@ -17,10 +17,11 @@ export async function POST(request: Request) {
     }
 
     const isConsultation = submission.form_source === "consultation-booking";
+    const sourceUrl = isConsultation ? "https://ai-marketing-growth-expert.willparker56.chatgpt.site/book-consultation" : "https://ai-marketing-growth-expert.willparker56.chatgpt.site/contact";
     const formSubmitPayload = {
       _subject: isConsultation ? `New Free Consultation Request — ${submission.business}` : `New Website Enquiry — ${submission.business}`,
       _template: "table",
-      _url: isConsultation ? "https://ai-marketing-growth-expert.willparker56.chatgpt.site/book-consultation" : "https://ai-marketing-growth-expert.willparker56.chatgpt.site/contact",
+      _url: sourceUrl,
       _replyto: submission.email,
       name: submission.name,
       email: submission.email,
@@ -39,12 +40,15 @@ export async function POST(request: Request) {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        Origin: "https://ai-marketing-growth-expert.willparker56.chatgpt.site",
+        Referer: sourceUrl,
         ...(process.env.CONTACT_FORM_API_KEY ? { Authorization: `Bearer ${process.env.CONTACT_FORM_API_KEY}` } : {}),
       },
       body: JSON.stringify(formSubmitPayload),
     });
-    const deliveryResult = await response.json().catch(() => null) as { success?: boolean; message?: string } | null;
-    if (!response.ok || deliveryResult?.success === false) {
+    const deliveryResult = await response.json().catch(() => null) as { success?: boolean | string; message?: string } | null;
+    const deliverySucceeded = response.ok && (deliveryResult?.success == null || String(deliveryResult.success).toLowerCase() === "true");
+    if (!deliverySucceeded) {
       console.error("Contact email delivery failed", response.status, deliveryResult?.message ?? "Unknown FormSubmit response");
       return NextResponse.json({ message: "Your message could not be emailed right now. Please email dikpalkc735@gmail.com directly." }, { status: 502 });
     }
