@@ -2,11 +2,15 @@
 
 import { FormEvent, useState } from "react";
 import { AlertCircle, CheckCircle2, LoaderCircle, Send } from "lucide-react";
-import { services } from "@/lib/site-data";
+import { services, siteConfig } from "@/lib/site-data";
 import { trackEvent } from "@/components/analytics";
 
 type Status = { type: "idle" | "loading" | "success" | "error"; message?: string };
 type ContactFormProps = { compact?: boolean; variant?: "contact" | "consultation" };
+type FormSubmitResult = { success?: boolean | string; message?: string };
+
+const formSubmitEndpoint = process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT?.trim()
+  || `https://formsubmit.co/ajax/${siteConfig.email}`;
 
 export function ContactForm({ compact = false, variant = "contact" }: ContactFormProps) {
   const [status, setStatus] = useState<Status>({ type: "idle" });
@@ -18,11 +22,31 @@ export function ContactForm({ compact = false, variant = "contact" }: ContactFor
     body.form_source = isConsultation ? "consultation-booking" : "website-contact";
     if (String(body.company_website ?? "").trim()) { setStatus({ type: "success", message: "Thank you. Your message has been received." }); return; }
     try {
-      const response = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
-      const result = await response.json() as { message?: string };
-      if (!response.ok) throw new Error(result.message ?? "Please try again.");
-      form.reset(); setStatus({ type: "success", message: result.message ?? (isConsultation ? "Thanks—your consultation request has been submitted." : "Thanks—your message has been sent.") }); trackEvent(isConsultation ? "consultation_booking_start" : "contact_form_submit", { service: body.service });
-    } catch (error) { setStatus({ type: "error", message: error instanceof Error ? error.message : "Please try again." }); }
+      const response = await fetch(formSubmitEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: isConsultation ? `New Free Consultation Request — ${body.business}` : `New Website Enquiry — ${body.business}`,
+          _template: "table",
+          _replyto: body.email,
+          _url: window.location.href,
+          name: body.name,
+          email: body.email,
+          business: body.business,
+          phone: body.phone || "Not provided",
+          website: body.website || "Not provided",
+          service: body.service,
+          marketing_budget: body.budget || "Not provided",
+          business_details: body.business_details,
+          main_marketing_challenge: body.challenge || "Not provided",
+          form_source: body.form_source,
+        }),
+      });
+      const result = await response.json().catch(() => null) as FormSubmitResult | null;
+      const succeeded = response.ok && (result?.success == null || String(result.success).toLowerCase() === "true");
+      if (!succeeded) throw new Error("Your message could not be sent right now. Please try again or email me directly.");
+      form.reset(); setStatus({ type: "success", message: isConsultation ? "Thanks—your free consultation request has been sent. I’ll be in touch soon." : "Thanks—your message has been sent to my inbox. I’ll be in touch soon." }); trackEvent(isConsultation ? "consultation_booking_start" : "contact_form_submit", { service: body.service });
+    } catch (error) { setStatus({ type: "error", message: error instanceof Error ? error.message : `Please email ${siteConfig.email} directly.` }); }
   }
 
   return <form id={isConsultation ? "consultation-form" : undefined} className={`contact-form ${compact ? "form-compact" : ""} ${isConsultation ? "consultation-form" : ""}`} onSubmit={submit}>

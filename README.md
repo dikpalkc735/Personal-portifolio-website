@@ -35,6 +35,7 @@ Copy `.env.example` to `.env.local` and add only the integrations you use. Never
 | `NEXT_PUBLIC_BOOKING_URL` | Calendly, Cal.com, or another scheduling URL |
 | `NEXT_PUBLIC_LINKEDIN_URL` etc. | Enables configured social links |
 | `CONTACT_FORM_ENDPOINT` | Server-side form/email endpoint. Production uses `https://formsubmit.co/ajax/dikpalkc735@gmail.com`. |
+| `NEXT_PUBLIC_CONTACT_FORM_ENDPOINT` | Optional browser-safe AJAX form endpoint. Defaults to the FormSubmit endpoint for the configured contact email. |
 | `CONTACT_FORM_API_KEY` | Optional bearer token for the contact endpoint |
 | `NEWSLETTER_ENDPOINT` | Server-side email list webhook |
 | `NEWSLETTER_API_KEY` | Optional bearer token for the newsletter endpoint |
@@ -78,7 +79,7 @@ Set `NEXT_PUBLIC_BOOKING_URL` to your real Calendly, Cal.com, or Google Calendar
 
 ## Contact and newsletter integrations
 
-`app/api/contact/route.ts` validates input, includes honeypot-ready spam handling, and forwards approved contact and consultation requests to FormSubmit. FormSubmit requires a one-time confirmation from the destination email address before it forwards submissions. `app/api/newsletter/route.ts` sends newsletter signups to the configured endpoint or the same FormSubmit inbox.
+The contact, consultation, and newsletter forms use FormSubmit's browser AJAX flow so they work reliably from Vercel without reloading the page. FormSubmit requires a one-time confirmation from the destination email address before it forwards submissions. The API routes remain available as integration points for a future email or CRM provider.
 
 Adapt the outbound payload if your provider requires a different schema. Add provider-specific rate limiting or CAPTCHA at the route layer if needed.
 
