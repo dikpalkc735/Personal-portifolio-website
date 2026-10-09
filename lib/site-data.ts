@@ -11,7 +11,7 @@ export const siteConfig = {
   brand: "Digital Dikpal",
   name: "Dikpal K C",
   role: "AI Marketing Expert",
-  email: "[Email Address]",
+  email: "dikpalkc735@gmail.com",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://ai-marketing-growth-expert.willparker56.chatgpt.site",
   bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL ?? "",
   socials: {

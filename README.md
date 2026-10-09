@@ -34,7 +34,7 @@ Copy `.env.example` to `.env.local` and add only the integrations you use. Never
 | `NEXT_PUBLIC_SITE_URL` | Canonical production origin |
 | `NEXT_PUBLIC_BOOKING_URL` | Calendly, Cal.com, or another scheduling URL |
 | `NEXT_PUBLIC_LINKEDIN_URL` etc. | Enables configured social links |
-| `CONTACT_FORM_ENDPOINT` | Server-side form/CRM webhook |
+| `CONTACT_FORM_ENDPOINT` | Server-side form/email endpoint. Production uses `https://formsubmit.co/ajax/dikpalkc735@gmail.com`. |
 | `CONTACT_FORM_API_KEY` | Optional bearer token for the contact endpoint |
 | `NEWSLETTER_ENDPOINT` | Server-side email list webhook |
 | `NEWSLETTER_API_KEY` | Optional bearer token for the newsletter endpoint |
@@ -78,7 +78,7 @@ Set `NEXT_PUBLIC_BOOKING_URL` to your real Calendly, Cal.com, or Google Calendar
 
 ## Contact and newsletter integrations
 
-`app/api/contact/route.ts` and `app/api/newsletter/route.ts` validate input, include honeypot-ready spam handling, and forward approved payloads to a server-only endpoint. This makes it easy to connect Resend, Formspree, HubSpot, Mailchimp, ConvertKit, or a CRM webhook without exposing secrets in browser code.
+`app/api/contact/route.ts` validates input, includes honeypot-ready spam handling, forwards approved contact and consultation requests to FormSubmit, and stores a database backup. FormSubmit requires a one-time confirmation from the destination email address before it forwards submissions. `app/api/newsletter/route.ts` stores newsletter signups and can forward them to a configured email platform.
 
 Adapt the outbound payload if your provider requires a different schema. Add provider-specific rate limiting or CAPTCHA at the route layer if needed.
 
