@@ -1,38 +1,107 @@
 .booking-intro {
-  position: sticky;
-  top: 118px;
-  padding-top: 18px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 28px 0 28px;
+  text-align: center;
 }
 
-.booking-grid {
-  grid-template-columns: 0.82fr 1.18fr;
-  align-items: start;
-  gap: 60px;
+.booking-hero {
+  padding: 34px 0 84px;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 85% 10%, rgba(124, 77, 255, 0.12), transparent 28%),
+    radial-gradient(circle at 12% 22%, rgba(49, 215, 232, 0.14), transparent 24%),
+    linear-gradient(180deg, #f6f9ff 0%, #eef4ff 100%);
+}
+
+.booking-hero .breadcrumbs {
+  color: #62708a;
+}
+
+.booking-simple-layout {
+  max-width: 1040px;
+}
+
+.booking-intro .eyebrow {
+  color: var(--blue);
+}
+
+.booking-hero .booking-intro h1 {
+  max-width: 760px;
+  margin: 12px auto 18px;
+  font-size: clamp(2.5rem, 4vw, 3.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.booking-hero .booking-intro > p:not(.eyebrow) {
+  max-width: 680px;
+  margin: 0 auto;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.booking-reassurance {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.booking-reassurance span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 13px;
+  border: 1px solid #d7e2f4;
+  border-radius: 999px;
+  color: #44536d;
+  background: rgba(255, 255, 255, 0.76);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.booking-reassurance svg {
+  color: var(--blue);
 }
 
 .booking-form-card {
-  padding: 34px;
-  border-radius: 26px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 42px;
+  border: 1px solid #d9e3f2;
+  border-radius: 24px;
   color: var(--ink);
   background: #fff;
-  box-shadow: 0 30px 80px rgba(0, 7, 24, 0.32);
+  box-shadow: 0 24px 64px rgba(26, 56, 112, 0.12);
 }
 
 .booking-form-card > p {
-  margin: 10px 0 0;
+  margin: 8px 0 0;
+  text-align: center;
   color: var(--ink-soft);
+  font-size: 0.84rem;
 }
 
 .booking-form-heading {
   display: flex;
-  gap: 14px;
-  align-items: flex-start;
+  justify-content: center;
+  gap: 13px;
+  align-items: center;
+  text-align: left;
 }
 
-.booking-form-heading > svg {
+.booking-form-icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
   flex: 0 0 auto;
-  margin-top: 3px;
+  place-items: center;
+  border-radius: 14px;
   color: var(--blue);
+  background: #edf3ff;
 }
 
 .booking-form-heading .eyebrow {
@@ -40,7 +109,7 @@
 }
 
 .booking-form-heading h2 {
-  font-size: 1.8rem;
+  font-size: 1.65rem;
 }
 
 .booking-form-card .contact-form {
@@ -49,6 +118,32 @@
   border: 0;
   border-radius: 0;
   box-shadow: none;
+}
+
+.booking-form-card .consultation-form .form-grid {
+  gap: 16px 18px;
+}
+
+.booking-form-card .consultation-form .form-grid label:last-child {
+  grid-column: 1 / -1;
+}
+
+.booking-form-card .consultation-form label {
+  margin-bottom: 15px;
+}
+
+.booking-form-card .consultation-form input,
+.booking-form-card .consultation-form select,
+.booking-form-card .consultation-form textarea {
+  border-color: #cfdaea;
+  background: #fff;
+}
+
+.booking-form-card .consultation-form input:focus,
+.booking-form-card .consultation-form select:focus,
+.booking-form-card .consultation-form textarea:focus {
+  border-color: var(--blue);
+  outline: 3px solid rgba(36, 107, 254, 0.12);
 }
 
 .booking-form-card .contact-form .button {
@@ -61,21 +156,39 @@
 }
 
 @media (max-width: 980px) {
-  .booking-grid {
-    grid-template-columns: 1fr;
-    gap: 38px;
-  }
-
   .booking-intro {
-    position: static;
-    padding-top: 0;
+    padding-top: 24px;
   }
 }
 
 @media (max-width: 640px) {
+  .booking-hero {
+    padding: 24px 0 58px;
+  }
+
+  .booking-intro {
+    padding: 24px 0 24px;
+  }
+
+  .booking-hero .booking-intro h1 {
+    font-size: clamp(2.25rem, 11vw, 3.1rem);
+  }
+
+  .booking-reassurance {
+    display: grid;
+  }
+
   .booking-form-card {
-    padding: 24px;
-    border-radius: 22px;
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+
+  .booking-form-heading {
+    justify-content: flex-start;
+  }
+
+  .booking-form-heading h2 {
+    font-size: 1.4rem;
   }
 }
 
