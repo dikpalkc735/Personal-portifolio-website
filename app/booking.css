@@ -81,7 +81,7 @@
 
 /* Site-wide usability fixes loaded after the core stylesheet. */
 .mobile-quick-nav {
-  display: none;
+  display: none !important;
 }
 
 .hero-section {
@@ -110,7 +110,7 @@
 
 @media (max-width: 980px) {
   .mobile-quick-nav {
-    display: grid;
+    display: grid !important;
   }
 
   .hero-grid {
