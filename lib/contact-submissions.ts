@@ -1,5 +1,3 @@
-import { env } from "cloudflare:workers";
-
 export type ContactSubmission = {
   name: string;
   business: string;
@@ -14,31 +12,12 @@ export type ContactSubmission = {
 };
 
 export async function saveContactSubmission(submission: ContactSubmission) {
-  if (!env.DB) throw new Error("Consultation storage is unavailable.");
-
-  return env.DB.prepare(`
-    INSERT INTO consultation_requests
-      (name, business, email, phone, website, service, budget, business_details, challenge, source)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `).bind(
-    submission.name,
-    submission.business,
-    submission.email,
-    submission.phone,
-    submission.website,
-    submission.service,
-    submission.budget,
-    submission.business_details,
-    submission.challenge,
-    submission.form_source,
-  ).run();
+  // Email delivery is the portable source of truth on Vercel. This hook is
+  // intentionally retained so a database adapter can be added later without
+  // changing the form routes.
+  void submission;
 }
 
 export async function saveNewsletterSubscriber(email: string) {
-  if (!env.DB) throw new Error("Newsletter storage is unavailable.");
-
-  return env.DB.prepare(`
-    INSERT OR IGNORE INTO newsletter_subscribers (email, source)
-    VALUES (?, ?)
-  `).bind(email, "website-newsletter").run();
+  void email;
 }

@@ -11,10 +11,7 @@ export async function POST(request: Request) {
     const { company_website: _honeypot, ...submission } = parsed.data;
     void _honeypot;
 
-    const endpoint = process.env.CONTACT_FORM_ENDPOINT?.trim();
-    if (!endpoint) {
-      return NextResponse.json({ message: "Email delivery is temporarily unavailable. Please email dikpalkc735@gmail.com directly." }, { status: 503 });
-    }
+    const endpoint = process.env.CONTACT_FORM_ENDPOINT?.trim() || "https://formsubmit.co/ajax/dikpalkc735@gmail.com";
 
     const isConsultation = submission.form_source === "consultation-booking";
     const sourceUrl = isConsultation ? "https://ai-marketing-growth-expert.willparker56.chatgpt.site/book-consultation" : "https://ai-marketing-growth-expert.willparker56.chatgpt.site/contact";

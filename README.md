@@ -4,11 +4,11 @@ A production-ready, conversion-focused personal brand and business website for *
 
 ## Technology
 
-- Next.js-compatible App Router via Vinext
+- Next.js App Router with a Vercel-compatible production build
 - React 19 and TypeScript
 - Tailwind CSS 4 plus a custom CSS variable design system
 - Zod validation for server-side form payloads
-- Cloudflare Worker-compatible Sites build, deployable on Vercel with standard Next.js tooling
+- Optional Vinext scripts for the existing OpenAI Sites deployment
 
 ## Install and run
 
@@ -23,7 +23,7 @@ Open the local URL printed in the terminal. Create a production build with:
 npm run build
 ```
 
-The bundled Sites starter uses Vinext for the production Worker build. A standard Next.js installation can also use the existing App Router source.
+The default commands use standard Next.js and produce the `.next` output required by Vercel. The `sites:*` scripts preserve the optional Vinext workflow used by the existing OpenAI Sites deployment.
 
 ## Environment variables
 
@@ -78,7 +78,7 @@ Set `NEXT_PUBLIC_BOOKING_URL` to your real Calendly, Cal.com, or Google Calendar
 
 ## Contact and newsletter integrations
 
-`app/api/contact/route.ts` validates input, includes honeypot-ready spam handling, forwards approved contact and consultation requests to FormSubmit, and stores a database backup. FormSubmit requires a one-time confirmation from the destination email address before it forwards submissions. `app/api/newsletter/route.ts` stores newsletter signups and can forward them to a configured email platform.
+`app/api/contact/route.ts` validates input, includes honeypot-ready spam handling, and forwards approved contact and consultation requests to FormSubmit. FormSubmit requires a one-time confirmation from the destination email address before it forwards submissions. `app/api/newsletter/route.ts` sends newsletter signups to the configured endpoint or the same FormSubmit inbox.
 
 Adapt the outbound payload if your provider requires a different schema. Add provider-specific rate limiting or CAPTCHA at the route layer if needed.
 
@@ -106,8 +106,9 @@ Before public launch, replace the email placeholder, connect real form/booking s
 
 1. Import the repository.
 2. Add the environment variables in Project Settings.
-3. Use the default install and build commands.
-4. Set `NEXT_PUBLIC_SITE_URL` to the production domain.
+3. Keep the Framework Preset set to **Next.js**.
+4. Use `npm run build` and leave Output Directory on the Next.js default.
+5. Set `NEXT_PUBLIC_SITE_URL` to the production domain.
 
 ### OpenAI Sites
 
